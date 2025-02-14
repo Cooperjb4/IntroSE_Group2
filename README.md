@@ -30,4 +30,10 @@ The goal of Masterpiece Market is to provide an independent, artist-focused plat
 * NetID - tcp202
 * Role - Back end development
 * Software - Using Python, MySQL, and Django for development
+
+### <ins>Jada Stewart</ins>
+* GitHub username - jadastewart
+* NetID - jis100
+* Role - Back end development
+* Software - Using Python and MySQL for development
   
