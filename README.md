@@ -24,3 +24,10 @@ The goal of Masterpiece Market is to provide an independent, artist-focused plat
 * NetID - mjl504
 * Role - Front-End Development
 * Software - Using HTML, CSS, and JS through VS Code for development
+
+## <ins>Tanner Payne</ins>
+* GitHub username - Tpayne04
+* NetID - tcp202
+* Role - Back end development
+* Software - Using Python, MySQL, and Django for development
+  
