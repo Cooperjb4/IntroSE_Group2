@@ -36,4 +36,10 @@ The goal of Masterpiece Market is to provide an independent, artist-focused plat
 * NetID - jis100
 * Role - Back end development
 * Software - Using Python and MySQL for development
+
+### <ins>Tyra Ofori</ins>
+* GitHub username - tyraofori
+* NetID - to342
+* Role - Back end development
+* Software - Using Python for development
   
