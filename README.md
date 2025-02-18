@@ -10,7 +10,10 @@ The goal of Masterpiece Market is to provide an independent, artist-focused plat
 * Users will be able to browse art listings.
 * Users will be able to create and manage art posts they would like to sell.
 * Users will be able to securely purchase art from sellers.
-* Users will be able to contact sellers about the pieces they are selling. 
+* Users will be able to contact sellers about the pieces they are selling.
+* Admin will be able to view all accounts that are registered.
+* Admin can delete, edit, and block accounts from the website.
+* Admin can view purchase histories and payments. 
 
 ## Team Members
 ### <ins>Cooper Black</ins>
