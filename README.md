@@ -19,8 +19,8 @@ The goal of Masterpiece Market is to provide an independent, artist-focused plat
 ### <ins>Cooper Black</ins>
 * GitHub username - Cooperjb4
 * NetID - cjb994
-* Role - Back end development
-* Software - Using Python and MySQL for development
+* Role - Front-End development
+* Software - Using HTML, CSS, and JS through VS Code for development
 
 ### <ins>Matthew Loyed</ins>
 * GitHub username - MatthewLoyed
