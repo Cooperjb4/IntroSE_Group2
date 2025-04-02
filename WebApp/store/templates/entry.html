@@ -1,0 +1,21 @@
+{% load static %}
+<!--this is needed to load css and js files in django-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Art E Commerce</title>
+    <link rel="stylesheet" href="{% static 'CSS/style.css' %}" />
+    <!--needed to enable CSS-->
+  </head>
+  <body>
+    <h1>Art E Commerce</h1>
+    <button class="nav-button" data-url="{% url 'signup' %}">Sign Up</button>
+    <button class="nav-button" data-url="{% url 'login' %}">Login</button>
+
+    <script src="{% static 'JS/script.js' %}"></script>
+    <!--needed to enable JS-->
+  </body>
+</html>

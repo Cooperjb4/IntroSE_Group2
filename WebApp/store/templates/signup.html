@@ -1,0 +1,52 @@
+{% load static %}
+<!--this is needed to load css and js files in django-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup Page</title>
+    <link rel="stylesheet" href="{% static 'CSS/style.css' %}" />
+    <!--needed to enable CSS-->
+  </head>
+  <body>
+    <h1>Sign Up</h1>
+
+    {% if messages %}
+    <div class="messages">
+      {% for message in messages %}
+      <p class="message">{{ message }}</p>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <button class="nav-button" data-url="{% url 'entry' %}">Back</button>
+    <button class="nav-button" data-url="{% url 'login' %}">Login</button>
+
+    <form method="POST">
+      {% csrf_token %}
+      <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required />
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required />
+      </div>
+      <div>
+        <label for="role">Choose a role:</label>
+        <select id="role" name="role" required>
+            <option value="User">User</option>
+            <option value="Seller">Seller</option>
+            <option value="Admin">Admin</option>
+        </select>
+    </div>
+      <button type="submit">Sign Up</button>
+    </form>
+    <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+
+    <script src="{% static 'JS/script.js' %}"></script>
+    <!--needed to enable JS-->
+  </body>
+</html>

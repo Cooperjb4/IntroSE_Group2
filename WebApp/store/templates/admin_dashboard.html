@@ -1,0 +1,86 @@
+{% load static %}
+<!--this is needed to load css and js files in django-->
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Account Page</title>
+    <link rel="stylesheet" href="{% static 'CSS/style.css' %}" />
+    <!--needed to enable CSS-->
+  </head>
+
+  <body>
+    <header>
+      <div class="tabs">
+        <button class="nav-button" data-url="{% url 'home' %}">Home</button>
+        <button class="nav-button" data-url="{% url 'cart' %}">
+          Shopping Cart
+        </button>
+        <button class="nav-button" data-url="{% url 'account' %}">
+          Account
+        </button>
+        <button class="nav-button" data-url="{% url 'entry' %}">Log Out</button>
+      </div>
+    </header>
+
+    <h1>Welcome to your Admin Page</h1>
+
+    <div id="userInfo">
+      <h2>User Info:</h2>
+
+      <p>Username: {{ user.username }}</p>
+    </div>
+
+    <div id="userInfo">
+      <h2>User Info:</h2>
+      <p>Username: {{ user.username }}</p>
+      <p>You are: {{ role }}</p>
+      <!-- Display the user's role -->
+    </div>
+
+    <div id="permissions">
+      <h2>Your Permissions:</h2>
+      <ul>
+        {% for permission in permissions %}
+        <li>{{ permission }}</li>
+        {% empty %}
+        <p>You have no permissions assigned.</p>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <table>
+      <tr>
+          <th>Username</th>
+          <th>Role</th>
+          <th>Actions</th>
+      </tr>
+      {% for user in users %}
+      <tr>
+          <td>{{ user.username }}</td>
+          <td>
+              {% if user.groups.all %}
+                  {{ user.groups.all.0.name }}
+              {% else %}
+                  No Role
+              {% endif %}
+          </td>
+          <td>
+              <form method="POST" action="{% url 'delete_account' user.id %}">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-danger">Delete</button>
+              </form>
+          </td>
+      </tr>
+      {% endfor %}
+  </table>
+
+
+    <script src="{% static 'JS/script.js' %}"></script>
+  </body>
+</html>

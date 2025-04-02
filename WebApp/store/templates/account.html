@@ -1,0 +1,84 @@
+{% load static %}
+<!--this is needed to load css and js files in django-->
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Account Page</title>
+    <link rel="stylesheet" href="{% static 'CSS/style.css' %}" />
+    <!--needed to enable CSS-->
+  </head>
+
+  <body>
+    <header>
+      <div class="tabs">
+        <button class="nav-button" data-url="{% url 'home' %}">Home</button>
+        <button class="nav-button" data-url="{% url 'cart' %}">
+          Shopping Cart
+        </button>
+        <button class="nav-button" data-url="{% url 'account' %}">
+          Account
+        </button>
+        <button class="nav-button" data-url="{% url 'entry' %}">Log Out</button>
+      </div>
+    </header>
+
+    <h1>Welcome to your Account Page</h1>
+
+    <div id="userInfo">
+      <h2>User Info:</h2>
+      <p>Username: {{ user.username }}</p>
+      <p>Role: {{ role }}</p>
+    </div>
+
+    <div id="permissions">
+      <h2>Your Permissions:</h2>
+      <ul>
+        {% for permission in permissions %}
+        <li>{{ permission }}</li>
+        {% empty %}
+        <p>You have no permissions assigned.</p>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div id="userActions">
+      <h2>Update Account:</h2>
+
+      <form method="POST" action="{% url 'edit_account' %}">
+        {% csrf_token %}
+        <div>
+          <label for="username">Enter in NEW Username:</label>
+          <input type="text" id="username" name="username" />
+        </div>
+        <div>
+          <label for="password">Enter in NEW Password:</label>
+          <input type="password" id="password" name="password" />
+        </div>
+        <div>
+          <label for="role">Choose a NEW role:</label>
+          <select id="role" name="role">
+            <option value=""></option>
+            <option value="User">User</option>
+            <option value="Seller">Seller</option>
+            <option value="Admin">Admin</option>
+          </select>
+        </div>
+        <button type="submit">Update Account!</button>
+      </form>
+    </div>
+
+    <!-- Delete Account Button -->
+    <form method="POST">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">Delete Account</button>
+    </form>
+
+    <script src="{% static 'JS/script.js' %}"></script>
+  </body>
+</html>
