@@ -1,0 +1,26 @@
+{% load static %}
+<!--this is needed to load css and js files in django-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping Cart Page</title>
+    <link rel="stylesheet" href="{% static 'CSS/style.css' %}" /> <!--needed to enable CSS-->
+  </head>
+  <body>
+    <header>
+      <div class="tabs">
+        <button class="nav-button" data-url="{% url 'home' %}">Home</button>
+        <button class="nav-button" data-url="{% url 'cart' %}">Shopping Cart</button>
+        <button class="nav-button" data-url="{% url 'account' %}">Account</button>
+        <button class="nav-button" data-url="{% url 'entry' %}">Log Out</button>
+      </div>
+    </header>
+
+    <h1>Your Shopping Cart</h1>
+
+    <script src="{% static 'JS/script.js' %}"></script> <!--needed to enable JS-->
+  </body>
+</html>

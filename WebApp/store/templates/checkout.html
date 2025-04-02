@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout Page</title>
+    <link rel="stylesheet" href="../CSS/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="tabs">
+        <button onclick="window.location.href='home.html'">Home</button>
+        <button onclick="window.location.href='cart.html'">
+          Shopping Cart
+        </button>
+        <button onclick="window.location.href='account.html'">Account</button>
+        <button onclick="window.location.href='signout.html'">Signout</button>
+      </div>
+    </header>
+
+    <h1>Time to Checkout</h1>
+    <button id="homeBtn">Home</button>
+    <button id="cartBtn">Shopping Cart</button>
+    <button id="confirmBtn">Confirm Checkout</button>
+    <!-- Add remove item button next to each product and add products obv -->
+    <script src="{% static 'JS/script.js' %}"></script> <!--needed to enable JS-->
+  </body>
+</html>
