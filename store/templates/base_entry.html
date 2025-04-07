@@ -1,0 +1,32 @@
+{% load static %}
+<!--this is needed to load css and js files in django-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Masterpiece Market</title>
+    <link rel="stylesheet" href="{% static 'CSS/entry_pages.css' %}" />
+    <!--needed to enable CSS-->
+  </head>
+  <body>
+    <!-- Display system messages -->
+    {% if messages %}
+    <div class="messages">
+      {% for message in messages %}
+      <div class="message {{ message.tags }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <main>
+      {% block content %}
+      <!--- Content from other htmls -->
+      {% endblock %}
+    </main>
+
+    <script src="{% static 'JS/script.js' %}"></script>
+    <!--needed to enable JS-->
+  </body>
+</html>

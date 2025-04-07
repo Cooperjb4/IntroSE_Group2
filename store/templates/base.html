@@ -1,0 +1,72 @@
+<!--This base.html file serves to be a base template for everything after the home page to reduce repeated code-->
+
+{% load static %}
+<!--this is needed to load css and js files in django-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+
+    <link rel="stylesheet" href="{% static 'CSS/home.css' %}" />
+    <!--needed to enable CSS-->
+    <link rel="stylesheet" href="{% static 'CSS/style.css' %}" />
+    <!--needed to enable CSS-->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <!--Include these tabs for any page that you want to have the tabs-->
+      <div class="tabs">
+        <button class="nav-button" data-url="{% url 'home' %}">Home</button>
+        <button class="nav-button" data-url="{% url 'account' %}">
+          Account
+        </button>
+        {% if request.user.groups.all.0.name == "Admin" %}
+        <button class="nav-button" data-url="{% url 'admin_dashboard' %}">
+          Admin Dashboard
+        </button>
+        {% endif %} {% if request.user.groups.all.0.name == "Seller" %}
+        <button class="nav-button" data-url="{% url 'seller_dashboard' %}">
+          Seller Dashboard
+        </button>
+        {% endif %}
+        <button class="nav-button" data-url="{% url 'cart' %}">Cart</button>
+        <form method="GET" action="{% url 'search' %}" class="search-form">
+          <input type="text" name="query" placeholder="Search for products..." value="{{ query|default:'' }}" />
+          <button type="submit">Search</button>
+      </form>
+        <button class="nav-button" data-url="{% url 'entry' %}">Log Out</button>
+      </div>
+    </header>
+
+    <!-- Display system messages -->
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+        <div class="message {{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <main>
+      {% block content %}
+      <!--- Content from other htmls -->
+      {% endblock %}
+    </main>
+
+    <script src="{% static 'JS/script.js' %}"></script>
+    <!--needed to enable JS-->
+  </body>
+</html>

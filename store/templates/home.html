@@ -1,0 +1,29 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1>Hello, {{ user.username }}!</h1>
+
+<section class="products">
+  {% if query %}
+  <h2>Search Results for "{{ query }}"</h2>
+  {% endif %}
+  <h2>Products</h2>
+  <ul class="productContainer">
+    {% for product in products %}
+    <li class="product">
+      <h3>{{ product.name }}</h3>
+      <img src="{{ product.image.url }}" alt="{{ product.name }}" />
+      <p>{{ product.description }}</p>
+      <p>Seller: {{ product.seller }}</p>
+      <p>Price: ${{ product.price }}</p>
+      <p>Stock: {{ product.stock }}</p>
+      <form method="POST" action="{% url 'add_to_cart' product.id %}">
+        {% csrf_token %}
+        <button type="submit" class="add-to-cart">Add to Cart</button>
+      </form>
+    </li>
+    {% empty %}
+    <p>No products available.</p>
+    {% endfor %}
+  </ul>
+</section>
+{% endblock %}

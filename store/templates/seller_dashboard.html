@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 class="dashboard-title">Welcome to your Seller Dashboard</h1>
+
+<section class="add-product-section">
+  <h3>Sell a Product</h3>
+
+  <form method="POST" action="{% url 'add_product' %}" enctype="multipart/form-data" class="add-product-form">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required />
+    </div>
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <input type="text" id="description" name="description" required />
+    </div>
+    <div class="form-group">
+      <label for="price">Price:</label>
+      <input type="text" id="price" name="price" required />
+    </div>
+    <div class="form-group">
+      <label for="stock">Stock:</label>
+      <input type="text" id="stock" name="stock" required />
+    </div>
+    <div class="form-group">
+      <label for="image">Image:</label>
+      <input type="file" id="image" name="image" accept="image/*" required />
+    </div>
+
+    <button type="submit" class="btn">Add Product to Store!</button>
+  </form>
+</section>
+
+<section class="products-section">
+  <h3>Products You Are Selling</h3>
+
+  <div class="productContainer">
+    {% for product in products %}
+      <div class="product-card">
+        <h4>{{ product.name }}</h4>
+        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-img" />
+        <p>{{ product.description }}</p>
+        <p>Price: ${{ product.price }}</p>
+        <p>Stock: {{ product.stock }}</p>
+
+        <form method="POST" action="{% url 'delete_own_product' product.id %}">
+          {% csrf_token %}
+          <button type="submit" class="btn">Delete Product</button>
+        </form>
+      </div>
+    {% empty %}
+      <p>No products found.</p>
+    {% endfor %}
+  </div>
+</section>
+
+{% endblock %}
