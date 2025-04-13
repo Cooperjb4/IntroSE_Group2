@@ -1,0 +1,12 @@
+# Ignore local SQLite DB
+db.sqlite3
+
+# Ignore compiled Python files
+__pycache__/
+*.pyc
+
+# Optional: Ignore media
+media/
+
+# VS Code settings
+.vscode/

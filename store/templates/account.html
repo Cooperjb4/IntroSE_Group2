@@ -1,0 +1,60 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="entry-screen">
+  <div class="form-container">
+    <h1>Welcome to your Account Page</h1>
+
+    <div class="form-group">
+      <h2>User Info:</h2>
+      <p>Username: {{ user.username }}</p>
+      <p>Role: {{ role }}</p>
+      <p>Money in Bank: ${{ user.profile.bank }}</p>
+    </div>
+
+    <div class="form-group">
+      <h2>Your Permissions:</h2>
+      {% if permissions %}
+      <ul>
+        {% for permission in permissions %}
+        <li>{{ permission }}</li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p>You have no permissions assigned.</p>
+      {% endif %}
+    </div>
+
+    <div class="form-group">
+      <h2>Update Account:</h2>
+
+      <form method="POST" action="{% url 'edit_account' %}">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="username">Enter NEW Username:</label>
+          <input type="text" id="username" name="username" />
+        </div>
+        <div class="form-group">
+          <label for="password">Enter NEW Password:</label>
+          <input type="password" id="password" name="password" />
+        </div>
+        <div class="form-group">
+          <label for="role">Choose NEW Role:</label>
+          <select id="role" name="role">
+            <option value=""></option>
+            <option value="User">User</option>
+            <option value="Seller">Seller</option>
+            <option value="Admin">Admin</option>
+          </select>
+        </div>
+        <button type="submit" class="btn">Update Account!</button>
+      </form>
+    </div>
+
+    <form method="POST" action="{% url 'delete_own_account' %}" style="margin-top: 20px">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">Delete Account</button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

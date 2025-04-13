@@ -1,0 +1,28 @@
+{% extends 'base_entry.html' %} {% block content %}
+
+<div class="entry-screen">
+  <div class="form-container">
+    <h1>Login Page</h1>
+
+    <div class="top-buttons">
+      <button class="nav-button" data-url="{% url 'entry' %}">Back</button>
+      <button class="nav-button" data-url="{% url 'signup' %}">Sign Up</button>
+    </div>
+
+    <form method="POST">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required />
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required />
+      </div>
+      <button type="submit">Login</button>
+    </form>
+    <p>Don't have an account? <a href="{% url 'signup' %}">Sign up</a></p>
+  </div>
+</div>
+
+{% endblock %}

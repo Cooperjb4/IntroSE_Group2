@@ -1,0 +1,93 @@
+/* === Entry Pages (Login, Signup) CSS === */
+
+/* General layout for entry screens */
+.entry-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Button styling for all entry buttons */
+button, .btn {
+  padding: 12px 24px;
+  background-color: #0077b6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+  margin: 10px;
+}
+
+button:hover, .btn:hover {
+  background-color: #023e8a;
+  transform: translateY(-2px);
+}
+
+/* Background and fonts */
+body {
+  background-image: url("../Images/titleScreenGradient.png");
+  background-size: cover;
+  background-position: center;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Top navigation buttons (Back, Signup, etc.) */
+.top-buttons {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+/* System messages (e.g., validation errors) */
+.message {
+  background-color: #fdd;
+  border: 1px solid #f99;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  color: #900;
+}
+
+/* Form container box */
+.form-container {
+  background-color: white;
+  padding: 25px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Label + input structure inside forms */
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
