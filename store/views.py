@@ -260,6 +260,11 @@ def checkout(request):
 
         with transaction.atomic(): #makes sure all operations either happen or nothing happens             
             for item in cart_items:
+                # Check if the product has enough stock
+                if item.quantity > item.product.stock:
+                    messages.error(request, f'Not enough stock for {item.product.name}. Only {item.product.stock} left.')
+                    return redirect('cart')
+                
                 #adds the price of each item in the cart to the total price
                 total_price += item.product.price * item.quantity 
                 

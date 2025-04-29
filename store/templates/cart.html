@@ -1,40 +1,44 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 
 <h1 class="cart-title">Your Shopping Cart</h1>
 
 {% if cart_items %}
-  <div class="productContainer">
-    {% for item in cart_items %}
-      <div class="product">
-        <h3>{{ item.product.name }}</h3>
+<div class="productContainer">
+  {% for item in cart_items %}
+  <div class="product">
+    <h3>{{ item.product.name }}</h3>
 
-        {% if item.product.image %}
-          <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="product-img" />
-        {% endif %}
+    {% if item.product.image %}
+    <img
+      src="{{ item.product.image.url }}"
+      alt="{{ item.product.name }}"
+      class="product-img"
+    />
+    {% endif %}
 
-        <p>Price: ${{ item.product.price }}</p>
-        <p>Quantity: {{ item.quantity }}</p>
+    <p>Price: ${{ item.product.price }}</p>
+    <p>Quantity: {{ item.quantity }}</p>
+    {% if item.quantity > item.product.stock %}
+    <p class="error">Only {{ item.product.stock }} left in stock!</p>
+    {% endif %}
 
-        <form method="POST" action="{% url 'remove_from_cart' item.product.id %}">
-          {% csrf_token %}
-          <button type="submit" class="btn">Remove</button>
-        </form>
-      </div>
-    {% endfor %}
+    <form method="POST" action="{% url 'remove_from_cart' item.product.id %}">
+      {% csrf_token %}
+      <button type="submit" class="btn">Remove</button>
+    </form>
   </div>
+  {% endfor %}
+</div>
 
-  <h3>Total Price: ${{ total_price }}</h3>
+<h3>Total Price: ${{ total_price }}</h3>
 
-  <form method="POST" action="{% url 'checkout' %}" class="checkout-form">
-    {% csrf_token %}
-    <button type="submit" class="btn checkout-btn">Confirm Checkout!</button>
-  </form>
+<form method="POST" action="{% url 'checkout' %}" class="checkout-form">
+  {% csrf_token %}
+  <button type="submit" class="btn checkout-btn">Confirm Checkout!</button>
+</form>
 
 {% else %}
-  <div class="cart-empty">
-    <p>Your cart is empty.</p>
-  </div>
-{% endif %}
-
-{% endblock %}
+<div class="cart-empty">
+  <p>Your cart is empty.</p>
+</div>
+{% endif %} {% endblock %}
