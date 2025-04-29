@@ -13,6 +13,7 @@
           <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="product-img" />
         {% endif %}
 
+        <p>Price: ${{ item.product.price }}</p>
         <p>Quantity: {{ item.quantity }}</p>
 
         <form method="POST" action="{% url 'remove_from_cart' item.product.id %}">
@@ -22,6 +23,8 @@
       </div>
     {% endfor %}
   </div>
+
+  <h3>Total Price: ${{ total_price }}</h3>
 
   <form method="POST" action="{% url 'checkout' %}" class="checkout-form">
     {% csrf_token %}

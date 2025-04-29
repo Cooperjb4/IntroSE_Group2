@@ -16,13 +16,15 @@
       <p>Seller: {{ product.seller }}</p>
       <p>Price: ${{ product.price }}</p>
       <p>Stock: {{ product.stock }}</p>
+      {% if product.stock > 0 %}
       <form method="POST" action="{% url 'add_to_cart' product.id %}">
         {% csrf_token %}
         <button type="submit" class="add-to-cart">Add to Cart</button>
       </form>
+      {% else %}
+      <p class="out-of-stock">Out of Stock</p>
+      {% endif %}
     </li>
-    {% empty %}
-    <p>No products available.</p>
     {% endfor %}
   </ul>
 </section>

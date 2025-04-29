@@ -78,7 +78,10 @@ def search(request):
 def cart(request):
     # Fetch all cart items for the logged-in user
     cart_items = Cart.objects.filter(user=request.user)
-    return render(request, 'cart.html', {'cart_items': cart_items})
+
+    total_price = sum(item.product.price * item.quantity for item in cart_items)  # Calculate total price
+
+    return render(request, 'cart.html', {'cart_items': cart_items, 'total_price': total_price})
 
 def checkout(request):
     return render(request, 'checkout.html')
@@ -274,7 +277,7 @@ def checkout(request):
             request.user.profile.bank -= total_price 
             request.user.profile.save()
         messages.success(request, 'Checkout successful')
-        return redirect('home')
+        return redirect('checkout_details')
     
     return redirect('cart')
 

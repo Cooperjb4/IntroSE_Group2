@@ -12,19 +12,6 @@
     </div>
 
     <div class="form-group">
-      <h2>Your Permissions:</h2>
-      {% if permissions %}
-      <ul>
-        {% for permission in permissions %}
-        <li>{{ permission }}</li>
-        {% endfor %}
-      </ul>
-      {% else %}
-      <p>You have no permissions assigned.</p>
-      {% endif %}
-    </div>
-
-    <div class="form-group">
       <h2>Update Account:</h2>
 
       <form method="POST" action="{% url 'edit_account' %}">
